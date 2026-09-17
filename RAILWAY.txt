@@ -1,0 +1,45 @@
+HOST STAGEBOX ON RAILWAY — NO GITHUB
+====================================
+GitHub is blocked on school Wi-Fi. Skip it.
+Railway can take this folder straight from your Mac.
+
+
+STEP 1 — Open Terminal, paste this, press Return
+------------------------------------------------
+export PATH="$HOME/.local/node/bin:$PATH"
+cd ~/Desktop/hello
+npx -y @railway/cli login --browserless
+
+It prints a pairing code and a railway.app link.
+Open that link in Chrome (school Wi-Fi is fine for Railway).
+Paste the code. Approve.
+
+If the login screen wants GitHub and GitHub is blocked:
+turn on phone hotspot for ONE minute, finish login, then
+switch back to school Wi-Fi. You only do this once.
+
+
+STEP 2 — Upload the app (same Terminal)
+---------------------------------------
+npx -y @railway/cli up -y --name stagebox
+
+Wait until it says success. First build takes a few minutes.
+
+
+STEP 3 — Public URL
+-------------------
+npx -y @railway/cli domain
+
+It prints a link like:
+https://stagebox-production-xxxx.up.railway.app
+
+That is the phone URL. No port. Use https.
+One person starts a room. Everyone else opens the same
+link and types the 4-letter code.
+
+
+If npx cannot talk to the internet
+----------------------------------
+School is blocking npm as well. Use a phone hotspot for
+steps 1–3, then you can close the hotspot. The Railway
+link stays online on school Wi-Fi after that.

@@ -1,0 +1,61 @@
+STAGEBOX — restart + public URL
+================================
+Easiest: double-click  Start Stagebox.command  in this folder
+(or the copy on your Desktop).
+
+That opens two Terminal windows by itself:
+  Window 1 — Stagebox (this Mac: http://localhost:5173)
+  Window 2 — public URL (copy the https://….trycloudflare.com line)
+
+Leave both open. Mac must stay awake.
+Stop: Ctrl+C in each window.
+The public URL is new every time.
+
+If macOS says it can’t be opened: right-click → Open → Open.
+First time it may ask to allow Terminal.
+
+
+TERMINAL 1 — start Stagebox
+---------------------------
+Copy all of this:
+
+export PATH="$HOME/.local/node/bin:$PATH"
+cd ~/Desktop/hello
+npm run dev
+
+
+Wait until it says it is running on 5173.
+This computer: http://localhost:5173
+
+
+TERMINAL 2 — public link for phones
+-----------------------------------
+Open a second Terminal window. Copy all of this:
+
+cd ~/Desktop/hello/.tools
+./cloudflared tunnel --url http://127.0.0.1:5173
+
+
+Look for a line like:
+
+  https://something-random.trycloudflare.com
+
+That is the phone URL. No port. Use https.
+Start a room on the Mac, join with the 4-letter code on the phone.
+
+
+If Terminal 2 says cloudflared not found
+----------------------------------------
+cd ~/Desktop/hello/.tools
+curl -fsSL -o cloudflared.tgz "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-darwin-arm64.tgz"
+tar -xzf cloudflared.tgz
+chmod +x cloudflared
+./cloudflared tunnel --url http://127.0.0.1:5173
+
+
+If npm is not found
+-------------------
+export PATH="$HOME/.local/node/bin:$PATH"
+cd ~/Desktop/hello
+npm install
+npm run dev

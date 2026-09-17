@@ -1,0 +1,30 @@
+{
+  "name": "stagebox",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host\" \"node server/index.js\"",
+    "dev:client": "vite --host",
+    "dev:server": "node server/index.js",
+    "build": "vite build",
+    "start": "NODE_ENV=production node server/index.js"
+  },
+  "dependencies": {
+    "@coderline/alphatab": "^1.6.1",
+    "@tonejs/midi": "^2.0.28",
+    "express": "^5.1.0",
+    "fflate": "^0.8.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.3"
+  }
+}
